@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef, useState } from 'react'
+import Forecast from './components/Forecast';
 
-function App() {
+import { Container, FormControl, IconButton, Box, Input, Link, Typography } from '@mui/material';
+import { Search } from '@mui/icons-material';
+import RoomIcon from '@mui/icons-material/Room';
+
+const App = () => {
+  const [city, setCity] = useState();
+  const refCity = useRef();
+
+  const captureCity = (e) => {
+    e.preventDefault();
+
+    const value = refCity.current.childNodes[1].value
+    const regex = /^$|^.*(<\s*script\s*>)|^.*(<\s*\/\s*script\s*>).*$/;
+
+    if(regex.test(value.trim())) 
+      return alert("Informe o nome de uma cidade!");
+
+    setCity(value);
+    refCity.current.childNodes[1].value = null;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container maxWidth='sm' sx={{marginTop: 4}}>
+      <Box maxWidth='100%' marginBottom={5}>
+        <FormControl sx={{width: '100%'}}>
+          <Input
+            ref={refCity}
+            type='text'
+            placeholder='Por qual cidade você gostaria de pesquisar?'
+            aria-label='Input destinado a obter o nome da cidade'
+            startAdornment={
+              <IconButton edge='start'>
+                <RoomIcon />
+              </IconButton>
+            }
+            endAdornment={
+              <IconButton edge='end' onClick={captureCity}>
+                <Search /> 
+              </IconButton>
+            }
+          />
+          <Forecast city={city} weatherKeyAPI={process.env.REACT_APP_WEATHER_KEY_API} />
+        </FormControl>
+      </Box>
+      <Link textAlign={'center'} href="https://github.com/jvmrcl" target="_blank" rel="noopener noreferrer">
+        <Typography variant="body1" color="inherit">
+          © 2024 Criado por João Marcon. Todos os direitos reservados.
+        </Typography>
+      </Link>
+    </Container>
+  )
 }
 
-export default App;
+export default App
