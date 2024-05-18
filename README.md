@@ -1,9 +1,9 @@
 # Previsão do Tempo com React & Material UI
 
-Este é um projeto de previsão do tempo desenvolvido com React e estilizado com Material UI. Utilize o padrão de design Container/Presentational para organizar a lógica de negócios e a apresentação de forma simples. A aplicação consome dados da API da OpenWeather para fornecer informações precisas sobre temperatura, status do clima atual, velocidade do vento e umidade.
+Este é um projeto de previsão do tempo desenvolvido com React e estilizado com Material UI. Foi utilizado o padrão de design Container/Presentational para organizar a lógica de negócios e a apresentação de forma simples. A aplicação consome dados da API da OpenWeather para fornecer informações precisas sobre temperatura, status do clima atual, velocidade do vento e umidade.
 
 ## Motivações do Projeto
-O projeto foi reescrito para melhorar a experiência do usuário e facilitar a manutenção contínua. Optamos pelo uso do React e Material UI para garantir uma interface moderna e responsiva, enquanto o padrão Container/Presentational foi adotado para manter o código organizado e de fácil compreensão.
+O projeto foi reescrito para melhorar a experiência do usuário e facilitar a manutenção contínua.
 
 ### Detalhes sobre o Projeto
 
