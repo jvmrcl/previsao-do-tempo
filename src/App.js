@@ -13,12 +13,15 @@ const App = () => {
     e.preventDefault();
 
     const value = refCity.current.childNodes[1].value
+    
+    // Filters input to prevent blanks from being typed or malicious scripts from being inserted.
     const regex = /^$|^.*(<\s*script\s*>)|^.*(<\s*\/\s*script\s*>).*$/;
 
     if(regex.test(value.trim())) 
       return alert("Informe o nome de uma cidade!");
-
     setCity(value);
+    
+    // Selects the input element and resets its value after searching.
     refCity.current.childNodes[1].value = null;
   }
 
